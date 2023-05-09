@@ -8,14 +8,17 @@ class Login {
 
     enterEmail(uEmail:string) {
         this.elements.emailField().type(uEmail)
+        cy.log('entered the login email for the user')
     }
 
     enterPassword(uPassword:string) {
         this.elements.passwordField().type(uPassword)
+        cy.log('entered the password for the user')
     }
 
     clickLoginButton() {
        this.elements.loginButton().click()
+       cy.log('clicked the login button to login as a registered user')
     }
 
 }

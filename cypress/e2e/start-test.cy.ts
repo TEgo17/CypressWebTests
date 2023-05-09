@@ -9,9 +9,12 @@ import 'cypress-xpath'
 
 
 it('Web Test Cases', () => {
+
+    // visit the home page of AutomationExercise
     cy.visit('https://www.automationexercise.com/')
     cy.log('Visiting the Main Page of the AutomationExercise site')
-    
+
+    // -- Login Page -- 
     homePage.clickLoginPage();
     cy.log('Calling the clickLoginPage() method to switch to the login page')
 
@@ -24,9 +27,11 @@ it('Web Test Cases', () => {
     loginPage.clickLoginButton();
     cy.log('Calling the clickLoginButton() method to enter the site by logging in')
 
+    // check to see if the login was successful
     homePage.elements.logoutButton().should('have.text',' Logout');
     cy.log('Checking to see if the login was successful')
 
+    //  -- Products Page -- 
     homePage.clickProductsPage();
     cy.log('Calling the clickProductsPage() method to switch to the products page')
     
@@ -42,6 +47,7 @@ it('Web Test Cases', () => {
     productsPage.addProductToCart("28");
     cy.log('Calling the addProductToCart() method to add Product #28 to the cart')
 
+    // -- Cart Page -- 
     homePage.clickCartPage();
     cy.log('Calling the clickCartPage() method to switch to the cart page')
 
@@ -54,6 +60,7 @@ it('Web Test Cases', () => {
     checkoutPage.placeOrder();
     cy.log('Calling the placeOrder() method to click the place order button')
 
+    // -- Payment Page -- 
     paymentPage.enterNameOnCard("Thamodh Egodawatte");
     cy.log('Calling the enterNameOnCard() method to enter cardholders name')
 
@@ -73,7 +80,7 @@ it('Web Test Cases', () => {
     cy.log('Calling the clickConfirmOrder() method to click the confirm order button')
 
     
-
+    // -- Invoice Page (end of test) -- 
     cy.window().then((win) => {
 
       const downloadInvoiceButton = cy.get('a').contains('Download Invoice')
@@ -86,7 +93,5 @@ it('Web Test Cases', () => {
       downloadInvoiceButton.click({force:true})
     })
     cy.log('Clicking the download invoice button and ending the set of web test cases')
-
-  
 
   })
